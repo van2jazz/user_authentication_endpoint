@@ -51,7 +51,7 @@ public class UserService {
         }
 
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            throw new RuntimeException(" Error: Username is already taken!");
+            throw new RuntimeException("Error: Username is already taken!");
         }
 
         User user = new User(
