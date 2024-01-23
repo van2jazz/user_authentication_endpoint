@@ -1,4 +1,4 @@
-# User_Authentication
+# User Authentication Endpoint 
 + This repository contains a secure and robust authentication system, built using Java Spring Boot. It provides a seamless user registration process through a RESTful API endpoints. It utilizes JSON Web Tokens (JWT) for secure and stateless authentication. The service ensures data integrity and security using encryption techniques for sensitive user information.
 
 + The APIs are well-documented and easily accessible through Swagger UI, making it simple for developers to test.
