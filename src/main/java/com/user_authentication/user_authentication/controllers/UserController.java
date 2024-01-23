@@ -36,8 +36,12 @@ public class UserController {
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
     @PostMapping("/signup")
     public ResponseEntity<MessageResponse> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        userService.registerUser(signUpRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponse("User registered successfully!"));
+        try {
+            userService.registerUser(signUpRequest);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponse("User registered successfully!"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MessageResponse(e.getMessage()));
+        }
     }
 
     //log in a registered user

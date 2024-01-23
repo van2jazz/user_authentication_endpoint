@@ -45,7 +45,15 @@ public class UserService {
 
     //Method to register a new user
     public void registerUser(SignupRequest signUpRequest) {
-        // Create a new user
+
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            throw new RuntimeException("Error: Email is already in use!");
+        }
+
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+            throw new RuntimeException(" Error: Username is already taken!");
+        }
+
         User user = new User(
                 signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
@@ -115,4 +123,3 @@ public class UserService {
                 roles);
     }
 }
-
